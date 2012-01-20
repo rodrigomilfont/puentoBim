@@ -7,7 +7,7 @@ VIMRC=.vimrc
 
 .PHONY: all vimrc clean
 
-all: $(CTAGS_PACKAGE) vimrc
+all: $(CTAGS_PACKAGE) unpack installCtags vimrc
 	cp $(VIMRC) ~/$(VIMRC)
 
 clean:
@@ -19,5 +19,6 @@ $(CTAGS_PACKAGE):
 
 unpack: $(CTAGS_PACKAGE)
 	tar -zxvf $(CTAGS_PACKAGE)
-	$(shell cd $(CTAGS_HOME))
-	$(shell ./configure)
+
+installCtags:	
+	cd $(CTAGS_HOME) && ./configure && $(MAKE) && $(MAKE) install 
