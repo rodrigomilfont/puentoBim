@@ -1,2 +1,5 @@
+// Install Ubuntu
+sudo apt-get install vim vim-gnome vim-common vim-gui-common
 
-cp .vimrc ~/.vimrc
+// and 
+make
