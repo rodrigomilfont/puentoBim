@@ -116,7 +116,11 @@ endif
 
 " END Vim like MS-Windows
 
-colorscheme railscasts
+" solarized
+syntax enable
+set background=dark
+colorscheme solarized
+
 set ruler
 set nu
 
