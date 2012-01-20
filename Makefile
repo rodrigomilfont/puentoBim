@@ -15,10 +15,10 @@ clean:
 	rm -rf $(CTAGS_PACKAGE) $(CTAGS_HOME)
 
 $(CTAGS_PACKAGE):
-	wget -c $(CTAGS_URL) \
+	wget -c $(CTAGS_URL) 
 
 unpack: $(CTAGS_PACKAGE)
 	tar -zxvf $(CTAGS_PACKAGE)
 
-installCtags:	
-	cd $(CTAGS_HOME) && ./configure && $(MAKE) && $(MAKE) install 
+installCtags: unpack
+	cd $(CTAGS_HOME) && ./configure && $(MAKE) && $(MAKE) install && $(MAKE) clean
