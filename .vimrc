@@ -1,10 +1,8 @@
-set encoding=ISO-8859-1
+set encoding=UTF-8
 
 " Pathogen
-filetype off
-runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
-call pathogen#helptags()
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 
 set nocompatible
 
