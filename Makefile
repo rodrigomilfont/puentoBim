@@ -21,4 +21,4 @@ unpack: $(CTAGS_PACKAGE)
 	tar -zxvf $(CTAGS_PACKAGE)
 
 installCtags: unpack
-	cd $(CTAGS_HOME) && ./configure && $(MAKE) && $(MAKE) install && $(MAKE) clean
+	cd $(CTAGS_HOME) && ./configure && $(MAKE) && sudo $(MAKE) install && $(MAKE) clean
