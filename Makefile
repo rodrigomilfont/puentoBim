@@ -18,10 +18,11 @@ clean:
 $(CTAGS_PACKAGE):
 	wget -c $(CTAGS_URL) 
 
-unpack: $(CTAGS_PACKAGE) $(installCtags)
+unpack: $(CTAGS_PACKAGE) 
 	tar -zxvf $(CTAGS_PACKAGE)
+	touch $@
 
 $(installCtags): unpack
-	#cd $(CTAGS_HOME) && ./configure && $(MAKE) && sudo $(MAKE) install && $(MAKE) clean
+	cd $(CTAGS_HOME) && ./configure && $(MAKE) && sudo $(MAKE) install && $(MAKE) clean
 	@echo $(installCtags)
 	touch $@
