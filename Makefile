@@ -6,10 +6,14 @@ installCtags=installCtags
 
 VIMRC=.vimrc
 
-.PHONY: all vimrc clean
+.PHONY: all vimrc clean dist-clean
 
 all: $(CTAGS_PACKAGE) $(installCtags) vimrc
 	cp $(VIMRC) ~/$(VIMRC)
+
+dist-clean:
+	$(clean)
+	rm -r installCtags unpack
 
 clean:
 	rm -vf ~/$(VIMRC)
