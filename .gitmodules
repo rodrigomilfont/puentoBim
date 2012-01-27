@@ -25,3 +25,9 @@
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "bundle/checksyntax_vim"]
+	path = bundle/checksyntax_vim
+	url = https://github.com/tomtom/checksyntax_vim.git
