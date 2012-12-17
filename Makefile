@@ -1,12 +1,11 @@
 CTAGS_URL=http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
 CTAGS_PACKAGE=$(shell basename $(CTAGS_URL))
 CTAGS_HOME=$(shell basename $(CTAGS_URL) .tar.gz)
-installCtags=installCtags
+installCtags ?= 'which ctags'
 
 
 VIMRC=.vimrc
 
-.PHONY: all vimrc clean dist-clean
 
 all: $(CTAGS_PACKAGE) $(installCtags) vimrc
 	cp $(VIMRC) ~/$(VIMRC)
@@ -30,3 +29,5 @@ $(installCtags): unpack
 	cd $(CTAGS_HOME) && ./configure && $(MAKE) && sudo $(MAKE) install && $(MAKE) clean
 	@echo $(installCtags)
 	touch $@
+
+.PHONY: all vimrc clean dist-clean
