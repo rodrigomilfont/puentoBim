@@ -19,9 +19,6 @@
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/snipmate.vim"]
-	path = bundle/snipmate.vim
-	url = git@github.com:rodrigomilfont/snipmate.vim.git
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
@@ -34,3 +31,9 @@
 [submodule "bundle/ack.vim"]
 	path = bundle/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "snipmate.vim"]
+	path = snipmate.vim
+	url = git@github.com:rodrigomilfont/snipmate.vim.git
+[submodule "bundle/snipmate"]
+	path = bundle/snipmate
+	url = git@github.com:rodrigomilfont/snipmate.vim.git
