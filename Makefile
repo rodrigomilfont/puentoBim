@@ -8,6 +8,8 @@ VIMRC=.vimrc
 all: unpack installCtags
 	cp $(VIMRC) ~/$(VIMRC)
 	@echo $(CTAGS_INSTALLED)
+	git submodule init
+	git submodule update
 
 dist-clean:
 	$(clean)
