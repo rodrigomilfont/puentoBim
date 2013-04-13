@@ -31,9 +31,9 @@
 [submodule "bundle/ack.vim"]
 	path = bundle/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
-[submodule "snipmate.vim"]
-	path = snipmate.vim
-	url = git@github.com:rodrigomilfont/snipmate.vim.git
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = https://github.com/rodrigomilfont/snipmate.vim.git
+[submodule "bundle/vim-backbone"]
+	path = bundle/vim-backbone
+	url = git@github.com:mklabs/vim-backbone.git
