@@ -319,10 +319,10 @@ function! s:Median(nums)
 endfunction
 
 "indent settings
-"set shiftwidth=4
-"set softtabstop=4
-"set expandtab
-"set autoindent
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set autoindent
 
 "folding settings
 set foldmethod=indent   "fold based on indent
