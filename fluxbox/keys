@@ -57,6 +57,25 @@ Mod4 7 :Tab 7
 Mod4 8 :Tab 8
 Mod4 9 :Tab 9
 
+######### Custom ##############
+Mod1 Control r :Reconfigure
+#Mod4 t :ExecCommand xterm -ls
+Mod4 t :Exec x-terminal-emulator
+Mod4 v :Exec terminator -e alsamixer
+Mod4 c :Exec clementine
+Mod4 l :Exec slock
+MaximizeHorizontal
+Control Mod1 Left :ResizeHorizontal -10
+Control Mod1 Right :ResizeHorizontal 10
+Control Mod1 Up :ResizeVertical -10
+Control Mod1 Down :ResizeVertical 1
+
+##### MOVE #####
+Mod4 Mod1 Left :Move -30
+Mod4 Mod1 Right :Move 30
+Mod4 Mod1 Up :MoveUp 30
+Mod4 Mod1 Down :MoveDown 30
+
 # open a terminal
 Mod1 F1 :Exec x-terminal-emulator
 
