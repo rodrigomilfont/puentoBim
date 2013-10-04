@@ -116,10 +116,10 @@ endif
 
 " END Vim like MS-Windows
 
-" solarized
+" molokai
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme molokai
 
 set ruler
 set nu
@@ -512,4 +512,3 @@ let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 
 " TagBar
 nmap <F8> :TagbarToggle<CR>
-
