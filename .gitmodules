@@ -37,3 +37,12 @@
 [submodule "bundle/vim-backbone"]
 	path = bundle/vim-backbone
 	url = git@github.com:mklabs/vim-backbone.git
+[submodule "bundle/snipmate_fork"]
+	path = bundle/snipmate_fork
+	url = git@github.com:rodrigomilfont/snipmate.vim.git
+[submodule "bundle/emmet"]
+	path = bundle/emmet
+	url = https://github.com/mattn/emmet-vim.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
