@@ -1,11 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/home/milfont/workspace/lg_smart_tv/app/scripts/views'
-let g:netrw_dirhist_2='/etc/fonts/conf.d'
-let g:netrw_dirhist_3='/home/milfont/.vim/bundle/vim-colors-solarized'
-let g:netrw_dirhist_4='/home/milfont/.vim/colors'
-let g:netrw_dirhist_5='/home/milfont/.vim'
-let g:netrw_dirhist_6='/home/milfont'
-let g:netrw_dirhist_7='/home'
-let g:netrw_dirhist_8='/'
-let g:netrw_dirhist_9='/home/milfont/workspace/schumi_video/app/assets/javascripts/extensions/schumi_video'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/milfont/workspace/prost'
+let g:netrw_dirhist_2='/home/milfont/workspace/prost/config/environments'
+let g:netrw_dirhist_3='/home/milfont/workspace/prost/config'
