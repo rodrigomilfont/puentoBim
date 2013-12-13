@@ -512,3 +512,7 @@ let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 
 " TagBar
 nmap <F8> :TagbarToggle<CR>
+
+" Emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
