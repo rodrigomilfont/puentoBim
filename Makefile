@@ -4,8 +4,9 @@ CTAGS_HOME=$(shell basename $(CTAGS_URL) .tar.gz)
 CTAGS_INSTALLED ?= $(shell whereis -b ctags | cut -d' ' -f2)
 
 VIMRC=.vimrc
+FLUXBOX=.fluxbox
 
-all: unpack installCtags
+all: unpack installCtags updateFluxbox
 	cp $(VIMRC) ~/$(VIMRC)
 	@echo $(CTAGS_INSTALLED)
 	git submodule update --init --recursive
@@ -26,8 +27,14 @@ unpack: $(CTAGS_PACKAGE)
 	touch $@
 
 installCtags: $(unpack)
-	cd $(CTAGS_HOME) && ./configure && $(MAKE) && sudo $(MAKE) install && $(MAKE) clean
+	cd $(CTAGS_HOME) 
+	./configure 
+	sudo make install 
 	@echo $(CTAGS_INSTALLED)
 	touch $@
+
+updateFluxbox:
+	rm -rf ~/$(FLUXBOX)
+	cp -r $(FLUXBOX) ~/$(FLUXBOX)
 
 .PHONY: all unpack clean dist-clean
