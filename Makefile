@@ -11,13 +11,15 @@ all: unpack installCtags updateFluxbox
 	@echo $(CTAGS_INSTALLED)
 	git submodule update --init --recursive
 
-dist-clean:
-	$(clean)
+dist-clear:
+	$(clear)
 	rm -r installCtags unpack
 
-clean:
-	rm -vf ~/$(VIMRC)
+clear-ctags:
 	rm -rf $(CTAGS_PACKAGE) $(CTAGS_HOME)
+
+clear: clear-ctags
+	rm -vf ~/$(VIMRC)
 
 $(CTAGS_PACKAGE):
 	wget -c $(CTAGS_URL) 
@@ -32,9 +34,10 @@ installCtags: $(unpack)
 	sudo make install 
 	@echo $(CTAGS_INSTALLED)
 	touch $@
+	$(clear-ctags)
 
 updateFluxbox:
 	rm -rf ~/$(FLUXBOX)
 	cp -r $(FLUXBOX) ~/$(FLUXBOX)
 
-.PHONY: all unpack clean dist-clean
+.PHONY: all unpack clear dist-clear
