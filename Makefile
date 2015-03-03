@@ -1,7 +1,7 @@
 CTAGS_URL=http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
 CTAGS_PACKAGE=$(shell basename $(CTAGS_URL))
 CTAGS_HOME=$(shell basename $(CTAGS_URL) .tar.gz)
-CTAGS_INSTALLED ?= $(shell whereis -b ctags | cut -d' ' -f2)
+CTAGS_INSTALLED ?= $(shell whereis -b ctags | cut -d ' ' -f2)
 
 VIMRC=.vimrc
 FLUXBOX=.fluxbox
@@ -40,4 +40,4 @@ updateFluxbox:
 	rm -rf ~/$(FLUXBOX)
 	cp -r $(FLUXBOX) ~/$(FLUXBOX)
 
-.PHONY: all unpack clear dist-clear
+.PHONY: all
