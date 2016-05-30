@@ -4,9 +4,8 @@ CTAGS_HOME=$(shell basename $(CTAGS_URL) .tar.gz)
 CTAGS_INSTALLED ?= $(shell whereis -b ctags | cut -d ' ' -f2)
 
 VIMRC=.vimrc
-FLUXBOX=.fluxbox
 
-all: unpack installCtags updateFluxbox clear-ctags
+all: unpack installCtags clear-ctags
 	cp $(VIMRC) ~/$(VIMRC)
 	@echo $(CTAGS_INSTALLED)
 	git submodule update --init --recursive
