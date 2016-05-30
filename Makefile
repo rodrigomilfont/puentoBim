@@ -9,6 +9,7 @@ all: unpack installCtags clear-ctags
 	cp $(VIMRC) ~/$(VIMRC)
 	@echo $(CTAGS_INSTALLED)
 	git submodule update --init --recursive
+	git submodule foreach 'git checkout master; git pull'
 
 dist-clear:
 	$(clear)
