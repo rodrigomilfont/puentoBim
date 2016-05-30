@@ -13,9 +13,6 @@
 [submodule "bundle/vim-bufexplorer"]
 	path = bundle/vim-bufexplorer
 	url = https://github.com/thisivan/vim-bufexplorer.git
-[submodule "bundle/zencoding-vim"]
-	path = bundle/zencoding-vim
-	url = https://github.com/mattn/zencoding-vim.git
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
@@ -25,15 +22,9 @@
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "bundle/ack.vim"]
-	path = bundle/ack.vim
-	url = https://github.com/mileszs/ack.vim.git
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = https://github.com/rodrigomilfont/snipmate.vim.git
-[submodule "bundle/vim-backbone"]
-	path = bundle/vim-backbone
-	url = git@github.com:mklabs/vim-backbone.git
 [submodule "bundle/snipmate_fork"]
 	path = bundle/snipmate_fork
 	url = git@github.com:rodrigomilfont/snipmate.vim.git
@@ -43,18 +34,9 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule "bundle/vim-surround"]
-	path = bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
 [submodule "bundle/tcomment_vim"]
 	path = bundle/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim.git
 [submodule "bundle/ctrlp.vim"]
 	path = bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
-[submodule "bundle/vim-actionscript"]
-	path = bundle/vim-actionscript
-	url = https://github.com/jeroenbourgois/vim-actionscript.git
-[submodule "bundle/doctorjs"]
-	path = bundle/doctorjs
-	url = https://github.com/faceleg/doctorjs.git

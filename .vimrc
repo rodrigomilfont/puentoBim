@@ -85,9 +85,6 @@ nmap <silent> <Leader>p :NERDTreeToggle<CR>
 "map to bufexplorer
 nnoremap <leader>b :BufExplorer<cr>
 
-"map for zencoding
-let g:user_zen_leader_key = '<c-x>'
-
 " Emmet
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
