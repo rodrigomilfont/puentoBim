@@ -30,14 +30,8 @@ unpack: $(CTAGS_PACKAGE)
 	touch $@
 
 installCtags: $(unpack)
-	cd $(CTAGS_HOME) 
-	./configure 
-	sudo make install 
+	cd $(CTAGS_HOME); ./configure; sudo make install;
 	@echo $(CTAGS_INSTALLED)
 	touch $@
-
-updateFluxbox:
-	rm -rf ~/$(FLUXBOX)
-	cp -r $(FLUXBOX) ~/$(FLUXBOX)
 
 .PHONY: all
