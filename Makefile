@@ -4,9 +4,12 @@ CTAGS_HOME=$(shell basename $(CTAGS_URL) .tar.gz)
 CTAGS_INSTALLED ?= $(shell whereis -b ctags | cut -d ' ' -f2)
 
 VIMRC=.vimrc
+TmuxConf=.tmux.conf
 
 all: unpack installCtags clear-ctags
 	cp $(VIMRC) ~/$(VIMRC)
+	sudo apt-get install tmux -y
+	cp $(TmuxConf) ~/$(TmuxConf)
 	@echo $(CTAGS_INSTALLED)
 	git submodule update --init --recursive
 	git submodule foreach 'git checkout master; git pull'
