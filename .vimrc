@@ -88,3 +88,42 @@ autocmd FileType html,css EmmetInstall
 "ack for grep
 set grepprg=ack
 set grepformat=%f:%l:%m
+
+
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'altercation/vim-colors-solarized'
+Plug 'endel/vim-github-colorscheme'
+" Awesome looking meta at bottom
+" Fugitive will help with git related stuff, and show branch on statusline
+Plug 'tpope/vim-fugitive' | Plug 'bling/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/syntastic'
+Plug 'vim-scripts/tComment' "Comment easily with gcc
+" Add plugins to &runtimepath
+call plug#end()
+
+
+" [1]
+" Color scheme
+syntax enable
+" let g:solarized_termcolors=16
+let g:solarized_termcolors=256
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+let g:colarized_termtrans = 1
+set background=dark
+colorscheme solarized
+" Allow powerline symbols to show up
+let g:airline_powerline_fonts = 1
+
+" [2]
+map <silent> <C-n> :NERDTreeToggle<cr>
+nnoremap <C-t> :call ToggleRelativeOn()<cr>
+" Close vim if only NERDTree is open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
