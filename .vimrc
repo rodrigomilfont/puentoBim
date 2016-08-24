@@ -58,12 +58,6 @@ set hidden
 "mostrar o parenteses
 set sm
 
-""""""""""""""""""""""""""Plugins"""""""""""""""""""""""""
-
-" Pathogen
-call pathogen#infect()
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-
 " molokai
 syntax enable
 set background=dark
@@ -89,7 +83,6 @@ autocmd FileType html,css EmmetInstall
 set grepprg=ack
 set grepformat=%f:%l:%m
 
-
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
@@ -98,15 +91,16 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'endel/vim-github-colorscheme'
-" Awesome looking meta at bottom
 " Fugitive will help with git related stuff, and show branch on statusline
-Plug 'tpope/vim-fugitive' | Plug 'bling/vim-airline'
+Plug 'tpope/vim-fugitive'
+" Awesome looking meta at bottom
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/syntastic'
 Plug 'vim-scripts/tComment' "Comment easily with gcc
 " Add plugins to &runtimepath
 call plug#end()
-
 
 " [1]
 " Color scheme
@@ -126,4 +120,6 @@ map <silent> <C-n> :NERDTreeToggle<cr>
 nnoremap <C-t> :call ToggleRelativeOn()<cr>
 " Close vim if only NERDTree is open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:airline_powerline_fonts = 1
 
