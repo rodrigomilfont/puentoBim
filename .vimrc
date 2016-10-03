@@ -63,9 +63,6 @@ syntax enable
 set background=dark
 colorscheme molokai
 
-" Add ctags
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-
 " TagBar
 nmap <F8> :TagbarToggle<CR>
 
@@ -79,28 +76,50 @@ nnoremap <leader>b :BufExplorer<cr>
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
-"ack for grep
-set grepprg=ack
-set grepformat=%f:%l:%m
-
 call plug#begin('~/.vim/plugged')
-
 " Make sure you use single quotes
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'endel/vim-github-colorscheme'
-" Fugitive will help with git related stuff, and show branch on statusline
+
 Plug 'tpope/vim-fugitive'
+
 " Awesome looking meta at bottom
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
 Plug 'ctrlpvim/ctrlp.vim'
+
 Plug 'scrooloose/syntastic'
+
 Plug 'vim-scripts/tComment' "Comment easily with gcc
 " Add plugins to &runtimepath
+
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
+Plug 'leafgarland/typescript-vim'
+
+Plug 'valloric/youcompleteme'
+
+Plug 'mileszs/ack.vim'
+
 call plug#end()
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-c>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
 " [1]
 " Color scheme
