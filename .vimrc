@@ -27,11 +27,11 @@ set wrap linebreak nolist
 set visualbell t_vb=
 
 "indent settings
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-" set expandtab
-" set autoindent
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set autoindent
 
 set wildmode=list:longest   "make cmdline tab completion similar to bash
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
@@ -63,9 +63,6 @@ syntax enable
 set background=dark
 colorscheme molokai
 
-" Add ctags
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-
 " TagBar
 nmap <F8> :TagbarToggle<CR>
 
@@ -79,28 +76,54 @@ nnoremap <leader>b :BufExplorer<cr>
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
-"ack for grep
-set grepprg=ack
-set grepformat=%f:%l:%m
-
 call plug#begin('~/.vim/plugged')
-
 " Make sure you use single quotes
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'endel/vim-github-colorscheme'
-" Fugitive will help with git related stuff, and show branch on statusline
+
 Plug 'tpope/vim-fugitive'
+
 " Awesome looking meta at bottom
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
 Plug 'ctrlpvim/ctrlp.vim'
+
 Plug 'scrooloose/syntastic'
+
 Plug 'vim-scripts/tComment' "Comment easily with gcc
 " Add plugins to &runtimepath
+
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
+Plug 'leafgarland/typescript-vim'
+
+Plug 'valloric/youcompleteme'
+
+Plug 'mileszs/ack.vim'
+
 call plug#end()
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
 " [1]
 " Color scheme
@@ -122,4 +145,37 @@ nnoremap <C-t> :call ToggleRelativeOn()<cr>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 let g:airline_powerline_fonts = 1
+
+set clipboard=unnamed
+
+" Make it obvious where 80 characters is
+set textwidth=80
+set colorcolumn=+1
+
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+
+  if !exists(":Ag")
+    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    nnoremap \ :Ag<SPACE>
+  endif
+endif
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['jshint']
 
