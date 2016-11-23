@@ -1,0 +1,15 @@
+snippet	csl "console.log arguments, this"
+console.log("$1", this, arguments);
+$0
+endsnippet
+
+snippet cs "console.log" b
+console.log("$1: ", $1);
+$0
+endsnippet
+
+snippet it "mocha" b
+it('$1', ()=> {
+	$2
+});
+endsnippet
