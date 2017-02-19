@@ -51,7 +51,7 @@ syntax on
 
 "some stuff to get the mouse going in term
 set mouse=a
-set ttymouse=xterm2
+" set ttymouse=xterm2
 
 "hide buffers when not displayed
 set hidden
@@ -82,7 +82,6 @@ call plug#begin('~/.vim/plugged')
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'altercation/vim-colors-solarized'
-Plug 'endel/vim-github-colorscheme'
 
 Plug 'tpope/vim-fugitive'
 
@@ -95,25 +94,33 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/syntastic'
 
 Plug 'vim-scripts/tComment' "Comment easily with gcc
-" Add plugins to &runtimepath
 
-" Track the engine.
 Plug 'SirVer/ultisnips'
 
-" Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
 Plug 'leafgarland/typescript-vim'
 
-Plug 'valloric/youcompleteme'
+" Plug 'valloric/youcompleteme'
 
 Plug 'mileszs/ack.vim'
 
-call plug#end()
+Plug 'mattn/emmet-vim'
 
+Plug 'pangloss/vim-javascript'
+
+Plug 'tpope/vim-surround'
+
+Plug 'majutsushi/tagbar'
+
+Plug 'raimondi/delimitmate'
+
+Plug 'ternjs/tern_for_vim'
+
+call plug#end()
 " make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -122,7 +129,6 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
 " [1]
@@ -133,8 +139,8 @@ let g:solarized_termcolors=256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:colarized_termtrans = 1
-set background=dark
-colorscheme solarized
+" set background=dark
+" colorscheme solarized
 " Allow powerline symbols to show up
 let g:airline_powerline_fonts = 1
 
@@ -177,5 +183,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['jshint']
 
+let g:syntastic_javascript_checkers = ['jshint']
+" let g:syntastic_javascript_checkers = ['eslint', 'jshint']
+
+let g:python3_host_prog = '/usr/local/bin/python3'
