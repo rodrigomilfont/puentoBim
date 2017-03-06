@@ -83,8 +83,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'altercation/vim-colors-solarized'
 
-Plug 'tpope/vim-fugitive'
-
 " Awesome looking meta at bottom
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -98,10 +96,9 @@ Plug 'vim-scripts/tComment' "Comment easily with gcc
 Plug 'SirVer/ultisnips'
 
 Plug 'honza/vim-snippets'
-
 Plug 'leafgarland/typescript-vim'
 
-" Plug 'valloric/youcompleteme'
+Plug 'valloric/youcompleteme'
 
 Plug 'mileszs/ack.vim'
 
@@ -109,18 +106,24 @@ Plug 'mattn/emmet-vim'
 
 Plug 'pangloss/vim-javascript'
 
-Plug 'tpope/vim-surround'
-
 Plug 'majutsushi/tagbar'
 
 Plug 'raimondi/delimitmate'
 
 Plug 'ternjs/tern_for_vim'
 
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+
+Plug 'godlygeek/tabular'
+
+Plug 'will133/vim-dirdiff'
+
 call plug#end()
 " make YCM compatible with UltiSnips (using supertab)
-"" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-"" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -188,3 +191,6 @@ let g:syntastic_javascript_checkers = ['jshint']
 " let g:syntastic_javascript_checkers = ['eslint', 'jshint']
 
 let g:python3_host_prog = '/usr/local/bin/python3'
+
+let g:DirDiffExcludes = "CVS,*.class,*.exe,.*.swp,node_modules/*"
+let g:DirDiffIgnore   = "node_modules"
