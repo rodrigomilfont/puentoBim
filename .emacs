@@ -15,6 +15,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("3380a2766cf0590d50d6366c5a91e976bdc3c413df963a0ab9952314b4577299" default)))
  '(package-selected-packages
    (quote
     (markdown-mode editorconfig base16-theme company-tern scss-mode json-mode web-mode alchemist yasnippet flx-ido emmet-mode evil-multiedit flycheck monokai-theme powerline-evil helm-projectile better-defaults ## helm magit projectile use-package evil-visual-mark-mode))))
@@ -116,6 +119,7 @@
 ;;; Bindings
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x p") 'projectile-find-file)
+(global-set-key (kbd "C-p") 'helm-projectile)
 
 ;;; Evil multiedit
 (evil-multiedit-default-keybinds)
@@ -203,6 +207,11 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-mode))
 
 ;;; TernJS
+; (add-to-list 'load-path " ~/.vim/tern/emacs")
+
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+
 (add-hook 'js-mode-hook (lambda () (tern-mode t)))
 (add-to-list 'company-backends 'company-tern)
 
