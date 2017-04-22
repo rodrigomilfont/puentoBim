@@ -30,7 +30,7 @@ set visualbell t_vb=
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-" set expandtab
+set expandtab
 " set autoindent
 
 set wildmode=list:longest   "make cmdline tab completion similar to bash
@@ -48,10 +48,6 @@ filetype indent on
 
 "turn on syntax highlighting
 syntax on
-
-"some stuff to get the mouse going in term
-set mouse=a
-set ttymouse=xterm2
 
 "hide buffers when not displayed
 set hidden
