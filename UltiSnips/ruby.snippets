@@ -1,3 +1,7 @@
 snippet pry "debug with pry"
 require 'pry'; binding.pry$1
 endsnippet
+
+snippet save "Save screenshot" b
+save_screenshot('../../tmp/capybara/$1.png', :full => true)
+endsnippet

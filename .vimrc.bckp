@@ -1,5 +1,4 @@
 set encoding=UTF-8
-
 set nocompatible
 set ruler
 
@@ -9,9 +8,7 @@ set nocompatible
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-
-"store lots of :cmdline history
-set history=1000
+set history=100 "store lots of :cmdline history
 
 set showcmd     "show incomplete cmds down the bottom
 set showmode    "show current mode down the bottom
@@ -33,16 +30,9 @@ set softtabstop=2
 set expandtab
 set autoindent
 
-set wildmode=list:longest   "make cmdline tab completion similar to bash
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
-set wildignore+=*.pdf,*.psd
-set wildignore+=node_modules/*,bower_components/*
-
-"display tabs and trailing spaces
-" set list
-"set listchars=tab:\ \ ,extends:>,precedes:<
-" disabling list because it interferes with soft wrap
+set wildmode=list:longest   " make cmdline tab completion similar to bash
+set wildmenu                " enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ " stuff to ignore when tab completing
 
 "load ftplugins and indent files
 filetype plugin on
@@ -60,29 +50,14 @@ set hidden
 "mostrar o parenteses
 set sm
 
-" molokai
-syntax enable
-set background=dark
-colorscheme molokai
-
-" TagBar
-nmap <F8> :TagbarToggle<CR>
-
-"map to NERDTree
-nmap <silent> <Leader>p :NERDTreeToggle<CR>
-
 "map to bufexplorer
 nnoremap <leader>b :BufExplorer<cr>
-
-" Emmet
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
 
 call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'
 
 " Awesome looking meta at bottom
@@ -93,14 +68,11 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'scrooloose/syntastic'
 
-Plug 'vim-scripts/tComment' "Comment easily with gcc
+Plug 'vim-scripts/tComment'
 
 Plug 'SirVer/ultisnips'
-
 Plug 'honza/vim-snippets'
 Plug 'leafgarland/typescript-vim'
-
-Plug 'valloric/youcompleteme'
 
 Plug 'mileszs/ack.vim'
 
@@ -108,54 +80,63 @@ Plug 'mattn/emmet-vim'
 
 Plug 'pangloss/vim-javascript'
 
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+
 Plug 'majutsushi/tagbar'
 
 Plug 'raimondi/delimitmate'
 
 Plug 'ternjs/tern_for_vim'
 
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-
 Plug 'godlygeek/tabular'
 
-Plug 'will133/vim-dirdiff'
+Plug 'othree/javascript-libraries-syntax.vim'
 
+Plug 'ternjs/tern_for_vim'
+
+Plug 'majutsushi/tagbar'
 call plug#end()
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsExpandTrigger       = "<tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit          = "vertical"
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
 " [1]
 " Color scheme
-syntax enable
-" let g:solarized_termcolors=16
+" syntax enable
+let g:solarized_termcolors=16
 let g:solarized_termcolors=256
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-let g:colarized_termtrans = 1
+let g:solarized_visibility="high"
+let g:solarized_contrast="high"
+let g:solarized_termtrans=1
+set background=dark
+colorscheme solarized
+
+" molokai
+" syntax enable
 " set background=dark
-" colorscheme solarized
+" colorscheme molokai
+
+" Emmet
+" let g:user_emmet_install_global = 0
+" autocmd FileType html,css EmmetInstall
+
 " Allow powerline symbols to show up
 let g:airline_powerline_fonts = 1
 
 " [2]
 map <silent> <C-n> :NERDTreeToggle<cr>
 nnoremap <C-t> :call ToggleRelativeOn()<cr>
+
 " Close vim if only NERDTree is open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-let g:airline_powerline_fonts = 1
 
 set clipboard=unnamed
 
@@ -168,17 +149,13 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_loc_list            = 1
+let g:syntastic_check_on_open            = 1
+let g:syntastic_check_on_wq              = 0
 
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers   = ['jshint']
 " let g:syntastic_javascript_checkers = ['eslint', 'jshint']
 
 let g:python3_host_prog = '/usr/local/bin/python3'
 
-let g:DirDiffExcludes = "CVS,*.class,*.exe,.*.swp,node_modules/*"
-let g:DirDiffIgnore   = "node_modules"
-
-" set autochdir
-set ignorecase
+nmap <F8> :TagbarToggle<CR>
