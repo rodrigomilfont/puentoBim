@@ -118,9 +118,8 @@
 
 ;;; Bindings
 (global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x p") 'projectile-find-file)
-(global-set-key (kbd "C-p") 'helm-projectile)
-
+;;;(global-set-key (kbd "C-x p") 'projectile-find-file)
+(global-set-key (kbd "C-x p") 'helm-projectile)
 ;;; Evil multiedit
 (evil-multiedit-default-keybinds)
 
