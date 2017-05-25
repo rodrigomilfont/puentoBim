@@ -122,6 +122,12 @@ Plug 'godlygeek/tabular'
 
 Plug 'will133/vim-dirdiff'
 
+Plug 'mxw/vim-jsx'
+
+Plug 'epilande/vim-react-snippets'
+
+Plug 'epilande/vim-es2015-snippets'
+
 call plug#end()
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -141,9 +147,10 @@ let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 syntax enable
 " let g:solarized_termcolors=16
 let g:solarized_termcolors=256
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
+let g:solarized_visibility = "normal"
+let g:solarized_contrast = "normal"
 let g:colarized_termtrans = 1
+
 " set background=dark
 " colorscheme solarized
 " Allow powerline symbols to show up
