@@ -164,7 +164,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 let g:airline_powerline_fonts = 1
 
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " Make it obvious where 80 characters is
 set textwidth=80
@@ -189,3 +189,5 @@ let g:DirDiffIgnore   = "node_modules"
 
 " set autochdir
 set ignorecase
+
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
