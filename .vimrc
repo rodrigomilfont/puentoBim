@@ -35,7 +35,9 @@ set autoindent
 
 set wildmode=list:longest   "make cmdline tab completion similar to bash
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
+set wildignore+=*.pdf,*.psd
+set wildignore+=node_modules/*,bower_components/*
 
 "display tabs and trailing spaces
 " set list
@@ -120,6 +122,12 @@ Plug 'godlygeek/tabular'
 
 Plug 'will133/vim-dirdiff'
 
+Plug 'mxw/vim-jsx'
+
+Plug 'epilande/vim-react-snippets'
+
+Plug 'epilande/vim-es2015-snippets'
+
 call plug#end()
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -139,9 +147,10 @@ let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 syntax enable
 " let g:solarized_termcolors=16
 let g:solarized_termcolors=256
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
+let g:solarized_visibility = "normal"
+let g:solarized_contrast = "normal"
 let g:colarized_termtrans = 1
+
 " set background=dark
 " colorscheme solarized
 " Allow powerline symbols to show up
@@ -155,28 +164,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 let g:airline_powerline_fonts = 1
 
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " Make it obvious where 80 characters is
 set textwidth=80
 set colorcolumn=+1
-
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-
-  if !exists(":Ag")
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Ag<SPACE>
-  endif
-endif
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -194,3 +186,8 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 let g:DirDiffExcludes = "CVS,*.class,*.exe,.*.swp,node_modules/*"
 let g:DirDiffIgnore   = "node_modules"
+
+" set autochdir
+set ignorecase
+
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
