@@ -74,12 +74,13 @@ nnoremap <leader>b :BufExplorer<cr>
 
 " Emmet
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,jsx EmmetInstall
+autocmd FileType html,css,javascript.jsx EmmetInstall
+
 let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-    \      'extends' : 'jsx',
-    \  },
-  \}
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
 
 call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
