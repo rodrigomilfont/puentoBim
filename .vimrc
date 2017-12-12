@@ -35,9 +35,7 @@ set autoindent
 
 set wildmode=list:longest   "make cmdline tab completion similar to bash
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
-set wildignore+=*.pdf,*.psd
-set wildignore+=node_modules/*,bower_components/*
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 
 "display tabs and trailing spaces
 " set list
@@ -76,7 +74,12 @@ nnoremap <leader>b :BufExplorer<cr>
 
 " Emmet
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,jsx EmmetInstall
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
 
 call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
@@ -91,7 +94,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'ctrlpvim/ctrlp.vim'
 
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 
 Plug 'vim-scripts/tComment' "Comment easily with gcc
 
@@ -123,10 +126,9 @@ Plug 'godlygeek/tabular'
 Plug 'will133/vim-dirdiff'
 
 Plug 'mxw/vim-jsx'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
-Plug 'epilande/vim-react-snippets'
-
-Plug 'epilande/vim-es2015-snippets'
+Plug 'w0rp/ale'
 
 call plug#end()
 " make YCM compatible with UltiSnips (using supertab)
@@ -147,10 +149,9 @@ let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 syntax enable
 " let g:solarized_termcolors=16
 let g:solarized_termcolors=256
-let g:solarized_visibility = "normal"
-let g:solarized_contrast = "normal"
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
 let g:colarized_termtrans = 1
-
 " set background=dark
 " colorscheme solarized
 " Allow powerline symbols to show up
@@ -164,30 +165,59 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 let g:airline_powerline_fonts = 1
 
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " Make it obvious where 80 characters is
 set textwidth=80
 set colorcolumn=+1
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
 
-let g:syntastic_javascript_checkers = ['jshint']
-" let g:syntastic_javascript_checkers = ['eslint', 'jshint']
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+
+  if !exists(":Ag")
+    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    nnoremap \ :Ag<SPACE>
+  endif
+endif
 
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 let g:DirDiffExcludes = "CVS,*.class,*.exe,.*.swp,node_modules/*"
 let g:DirDiffIgnore   = "node_modules"
 
-" set autochdir
-set ignorecase
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+nmap ; :Buffers<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>r :Tags<CR>
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" Asynchronous Lint Engine (ALE)
+" Limit linters used for JavaScript.
+" let g:ale_linters = {
+" \  'javascript': ['flow']
+" \}
+highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
+highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
+let g:ale_sign_error = 'X' " could use emoji
+let g:ale_sign_warning = '?' " could use emoji
+let g:ale_statusline_format = ['X %d', '? %d', '']
+" %linter% is the name of the linter that provided the message
+" %s is the error or warning message
+let g:ale_echo_msg_format = '%linter% says %s'
+" Map keys to navigate between lines with errors and warnings.
+nnoremap <leader>an :ALENextWrap<cr>
+nnoremap <leader>ap :ALEPreviousWrap<cr>
+
+let g:ale_completion_enabled = 1
+let g:ale_sign_column_always = 1
+
