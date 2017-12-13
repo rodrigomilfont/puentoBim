@@ -95,10 +95,15 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'ctrlpvim/ctrlp.vim'
 
-" Plug 'scrooloose/syntastic'
-
 Plug 'vim-scripts/tComment' "Comment easily with gcc
 
+" ES2015 code snippets (Optional)
+Plug 'epilande/vim-es2015-snippets'
+
+" React code snippets
+Plug 'epilande/vim-react-snippets'
+
+" Ultisnips
 Plug 'SirVer/ultisnips'
 
 Plug 'honza/vim-snippets'
@@ -130,6 +135,8 @@ Plug 'mxw/vim-jsx'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 Plug 'w0rp/ale'
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 call plug#end()
 " make YCM compatible with UltiSnips (using supertab)
@@ -222,3 +229,5 @@ nnoremap <leader>ap :ALEPreviousWrap<cr>
 let g:ale_completion_enabled = 1
 let g:ale_sign_column_always = 1
 
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
