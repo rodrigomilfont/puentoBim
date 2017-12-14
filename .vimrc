@@ -138,6 +138,8 @@ Plug 'w0rp/ale'
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
+Plug 'editorconfig/editorconfig-vim'
+
 call plug#end()
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -231,3 +233,5 @@ let g:ale_sign_column_always = 1
 
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+
+let g:prettier#config#bracket_spacing = 'true'
