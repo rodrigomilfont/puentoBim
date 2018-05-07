@@ -1,1 +1,2 @@
-plugged/
+*.sw[n|p|o]
+Session.vim
