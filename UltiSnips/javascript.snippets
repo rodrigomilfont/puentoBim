@@ -27,3 +27,43 @@ endsnippet
 snippet precode "pre code and stringify" b
 <pre><code>{ JSON.stringify($1, null, 4)}</code></pre>
 endsnippet
+
+snippet objass "Object Assign" b
+Object.assign({}, $1, { 
+	$2
+})
+endsnippet
+
+snippet tplSpec "Template Spec" b
+import Vue from 'vue'
+import { createLocalVue, mount } from '@vue/test-utils'
+import $1 from '@/$2'
+import VueI18n from 'vue-i18n'
+import messages from '@/localization/pt-BR'
+import VueMaterial from 'vue-material'
+
+const localVue = createLocalVue()
+
+/* Ignore Elements */
+Vue.config.ignoredElements = [
+  'cx-tab',
+  'cx-button'
+]
+
+localVue.use(VueI18n)
+localVue.use(VueMaterial)
+
+const i18n = new VueI18n({ locale: 'pt-BR', messages })
+
+describe('Snapshot $1', () => {
+  it('$1 toMatchSnapshot', () => {
+    const wrapper = mount($1, {
+      localVue,
+      i18n,
+      propsData: {
+      }
+    })
+    expect(wrapper.element).toMatchSnapshot()
+  })
+})
+endsnippet

@@ -15,3 +15,23 @@ export default {
 
 </style>
 endsnippet
+
+snippet	mounted "mounted"
+mounted (){
+	$0
+},
+endsnippet
+
+snippet prop "props"
+props: {
+	$1: { type: $2, default: $3 }
+},
+endsnippet
+
+snippet computed "computed"
+computed: {
+	$1: function () {
+		$2
+	}
+}
+endsnippet
